@@ -59,13 +59,15 @@ Partial Class Form1
         Label19 = New Label()
         Label20 = New Label()
         Label21 = New Label()
-        Button1 = New Button()
-        Button2 = New Button()
-        Button3 = New Button()
+        Btnnext = New Button()
+        Btnrestart = New Button()
+        Btnquit = New Button()
         Label22 = New Label()
         Label23 = New Label()
         TxtSuburb = New TextBox()
         TxtStreetName = New TextBox()
+        LblGourmet = New Label()
+        LblRegular = New Label()
         CType(UpdC, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdV, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdH, ComponentModel.ISupportInitialize).BeginInit()
@@ -91,12 +93,12 @@ Partial Class Form1
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point)
+        Label2.Font = New Font("Tw Cen MT Condensed Extra Bold", 18F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.Location = New Point(3, 8)
         Label2.Name = "Label2"
-        Label2.Size = New Size(199, 28)
+        Label2.Size = New Size(225, 28)
         Label2.TabIndex = 1
-        Label2.Text = "Rotorua Dream Pizza "' 
+        Label2.Text = "Rotorua Dream Pizza™"' 
         ' Label3
         ' 
         Label3.AutoSize = True
@@ -158,7 +160,7 @@ Partial Class Form1
         TxtStreetNumber.Enabled = False
         TxtStreetNumber.Location = New Point(124, 153)
         TxtStreetNumber.Name = "TxtStreetNumber"
-        TxtStreetNumber.Size = New Size(256, 23)
+        TxtStreetNumber.Size = New Size(247, 23)
         TxtStreetNumber.TabIndex = 8
         ' 
         ' TxtPhone
@@ -174,9 +176,9 @@ Partial Class Form1
         Label7.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(3, 224)
         Label7.Name = "Label7"
-        Label7.Size = New Size(183, 21)
+        Label7.Size = New Size(113, 21)
         Label7.TabIndex = 10
-        Label7.Text = "Regular pizzas ($8.50 ea)"' 
+        Label7.Text = "Regular pizzas:"' 
         ' Label8
         ' 
         Label8.AutoSize = True
@@ -192,13 +194,15 @@ Partial Class Form1
         Label9.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label9.Location = New Point(3, 392)
         Label9.Name = "Label9"
-        Label9.Size = New Size(200, 21)
+        Label9.Size = New Size(121, 21)
         Label9.TabIndex = 12
-        Label9.Text = "Gourmet pizzas ($12.50 ea)"' 
+        Label9.Text = "Gourmet pizzas:"' 
         ' UpdC
         ' 
         UpdC.Location = New Point(151, 257)
+        UpdC.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdC.Name = "UpdC"
+        UpdC.ReadOnly = True
         UpdC.Size = New Size(35, 23)
         UpdC.TabIndex = 13
         ' 
@@ -214,42 +218,54 @@ Partial Class Form1
         ' UpdV
         ' 
         UpdV.Location = New Point(336, 315)
+        UpdV.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdV.Name = "UpdV"
+        UpdV.ReadOnly = True
         UpdV.Size = New Size(35, 23)
         UpdV.TabIndex = 15
         ' 
         ' UpdH
         ' 
         UpdH.Location = New Point(336, 286)
+        UpdH.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdH.Name = "UpdH"
+        UpdH.ReadOnly = True
         UpdH.Size = New Size(35, 23)
         UpdH.TabIndex = 16
         ' 
         ' UpdHc
         ' 
         UpdHc.Location = New Point(336, 257)
+        UpdHc.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdHc.Name = "UpdHc"
+        UpdHc.ReadOnly = True
         UpdHc.Size = New Size(35, 23)
         UpdHc.TabIndex = 17
         ' 
         ' UpdM
         ' 
         UpdM.Location = New Point(151, 344)
+        UpdM.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdM.Name = "UpdM"
+        UpdM.ReadOnly = True
         UpdM.Size = New Size(35, 23)
         UpdM.TabIndex = 18
         ' 
         ' UpdP
         ' 
         UpdP.Location = New Point(151, 315)
+        UpdP.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdP.Name = "UpdP"
+        UpdP.ReadOnly = True
         UpdP.Size = New Size(35, 23)
         UpdP.TabIndex = 19
         ' 
         ' UpdB
         ' 
         UpdB.Location = New Point(151, 286)
+        UpdB.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdB.Name = "UpdB"
+        UpdB.ReadOnly = True
         UpdB.Size = New Size(35, 23)
         UpdB.TabIndex = 20
         ' 
@@ -310,35 +326,45 @@ Partial Class Form1
         ' UpdIv
         ' 
         UpdIv.Location = New Point(336, 456)
+        UpdIv.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdIv.Name = "UpdIv"
+        UpdIv.ReadOnly = True
         UpdIv.Size = New Size(35, 23)
         UpdIv.TabIndex = 27
         ' 
         ' UpdIh
         ' 
         UpdIh.Location = New Point(336, 427)
+        UpdIh.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdIh.Name = "UpdIh"
+        UpdIh.ReadOnly = True
         UpdIh.Size = New Size(35, 23)
         UpdIh.TabIndex = 28
         ' 
         ' UpdIm
         ' 
         UpdIm.Location = New Point(151, 485)
+        UpdIm.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdIm.Name = "UpdIm"
+        UpdIm.ReadOnly = True
         UpdIm.Size = New Size(35, 23)
         UpdIm.TabIndex = 29
         ' 
         ' UpdIp
         ' 
         UpdIp.Location = New Point(151, 456)
+        UpdIp.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdIp.Name = "UpdIp"
+        UpdIp.ReadOnly = True
         UpdIp.Size = New Size(35, 23)
         UpdIp.TabIndex = 30
         ' 
         ' UpdIc
         ' 
         UpdIc.Location = New Point(151, 427)
+        UpdIc.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdIc.Name = "UpdIc"
+        UpdIc.ReadOnly = True
         UpdIc.Size = New Size(35, 23)
         UpdIc.TabIndex = 31
         ' 
@@ -387,35 +413,35 @@ Partial Class Form1
         Label21.Size = New Size(104, 20)
         Label21.TabIndex = 36
         Label21.Text = "Italian Cheese:"' 
-        ' Button1
+        ' Btnnext
         ' 
-        Button1.BackColor = Color.LimeGreen
-        Button1.Location = New Point(12, 518)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(55, 55)
-        Button1.TabIndex = 37
-        Button1.Text = "Next"
-        Button1.UseVisualStyleBackColor = False
+        Btnnext.BackColor = Color.LimeGreen
+        Btnnext.Location = New Point(12, 518)
+        Btnnext.Name = "Btnnext"
+        Btnnext.Size = New Size(55, 55)
+        Btnnext.TabIndex = 37
+        Btnnext.Text = "Next"
+        Btnnext.UseVisualStyleBackColor = False
         ' 
-        ' Button2
+        ' Btnrestart
         ' 
-        Button2.BackColor = Color.Red
-        Button2.Location = New Point(245, 518)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(55, 55)
-        Button2.TabIndex = 38
-        Button2.Text = "Restart"
-        Button2.UseVisualStyleBackColor = False
+        Btnrestart.BackColor = Color.Red
+        Btnrestart.Location = New Point(245, 518)
+        Btnrestart.Name = "Btnrestart"
+        Btnrestart.Size = New Size(55, 55)
+        Btnrestart.TabIndex = 38
+        Btnrestart.Text = "Restart"
+        Btnrestart.UseVisualStyleBackColor = False
         ' 
-        ' Button3
+        ' Btnquit
         ' 
-        Button3.BackColor = Color.Red
-        Button3.Location = New Point(316, 518)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(55, 55)
-        Button3.TabIndex = 39
-        Button3.Text = "Quit"
-        Button3.UseVisualStyleBackColor = False
+        Btnquit.BackColor = Color.Red
+        Btnquit.Location = New Point(316, 518)
+        Btnquit.Name = "Btnquit"
+        Btnquit.Size = New Size(55, 55)
+        Btnquit.TabIndex = 39
+        Btnquit.Text = "Quit"
+        Btnquit.UseVisualStyleBackColor = False
         ' 
         ' Label22
         ' 
@@ -440,7 +466,7 @@ Partial Class Form1
         TxtSuburb.Enabled = False
         TxtSuburb.Location = New Point(73, 182)
         TxtSuburb.Name = "TxtSuburb"
-        TxtSuburb.Size = New Size(307, 23)
+        TxtSuburb.Size = New Size(298, 23)
         TxtSuburb.TabIndex = 42
         ' 
         ' TxtStreetName
@@ -448,21 +474,41 @@ Partial Class Form1
         TxtStreetName.Enabled = False
         TxtStreetName.Location = New Point(108, 124)
         TxtStreetName.Name = "TxtStreetName"
-        TxtStreetName.Size = New Size(272, 23)
+        TxtStreetName.Size = New Size(263, 23)
         TxtStreetName.TabIndex = 43
         ' 
+        ' LblGourmet
+        ' 
+        LblGourmet.AutoSize = True
+        LblGourmet.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblGourmet.Location = New Point(130, 392)
+        LblGourmet.Name = "LblGourmet"
+        LblGourmet.Size = New Size(40, 21)
+        LblGourmet.TabIndex = 44
+        LblGourmet.Text = "0.00"' 
+        ' LblRegular
+        ' 
+        LblRegular.AutoSize = True
+        LblRegular.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblRegular.Location = New Point(120, 224)
+        LblRegular.Name = "LblRegular"
+        LblRegular.Size = New Size(40, 21)
+        LblRegular.TabIndex = 45
+        LblRegular.Text = "0.00"' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(383, 585)
+        Controls.Add(LblRegular)
+        Controls.Add(LblGourmet)
         Controls.Add(TxtStreetName)
         Controls.Add(TxtSuburb)
         Controls.Add(Label23)
         Controls.Add(Label22)
-        Controls.Add(Button3)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        Controls.Add(Btnquit)
+        Controls.Add(Btnrestart)
+        Controls.Add(Btnnext)
         Controls.Add(Label21)
         Controls.Add(Label20)
         Controls.Add(Label19)
@@ -555,11 +601,13 @@ Partial Class Form1
     Friend WithEvents Label19 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label21 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents Btnnext As Button
+    Friend WithEvents Btnrestart As Button
+    Friend WithEvents Btnquit As Button
     Friend WithEvents Label22 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents TxtSuburb As TextBox
     Friend WithEvents TxtStreetName As TextBox
+    Friend WithEvents LblGourmet As Label
+    Friend WithEvents LblRegular As Label
 End Class
