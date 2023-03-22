@@ -202,7 +202,6 @@ Partial Class Form1
         UpdC.Location = New Point(151, 257)
         UpdC.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdC.Name = "UpdC"
-        UpdC.ReadOnly = True
         UpdC.Size = New Size(35, 23)
         UpdC.TabIndex = 13
         ' 
@@ -499,7 +498,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(383, 585)
+        ClientSize = New Size(383, 581)
         Controls.Add(LblRegular)
         Controls.Add(LblGourmet)
         Controls.Add(TxtStreetName)
