@@ -68,6 +68,8 @@ Partial Class Form1
         TxtStreetName = New TextBox()
         LblGourmet = New Label()
         LblRegular = New Label()
+        Label24 = New Label()
+        LblTotal = New Label()
         CType(UpdC, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdV, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdH, ComponentModel.ISupportInitialize).BeginInit()
@@ -202,6 +204,7 @@ Partial Class Form1
         UpdC.Location = New Point(151, 257)
         UpdC.Maximum = New [Decimal](New Integer() {5, 0, 0, 0})
         UpdC.Name = "UpdC"
+        UpdC.ReadOnly = True
         UpdC.Size = New Size(35, 23)
         UpdC.TabIndex = 13
         ' 
@@ -415,7 +418,7 @@ Partial Class Form1
         ' Btnnext
         ' 
         Btnnext.BackColor = Color.LimeGreen
-        Btnnext.Location = New Point(12, 518)
+        Btnnext.Location = New Point(12, 561)
         Btnnext.Name = "Btnnext"
         Btnnext.Size = New Size(55, 55)
         Btnnext.TabIndex = 37
@@ -425,7 +428,7 @@ Partial Class Form1
         ' Btnrestart
         ' 
         Btnrestart.BackColor = Color.Red
-        Btnrestart.Location = New Point(245, 518)
+        Btnrestart.Location = New Point(255, 561)
         Btnrestart.Name = "Btnrestart"
         Btnrestart.Size = New Size(55, 55)
         Btnrestart.TabIndex = 38
@@ -435,7 +438,7 @@ Partial Class Form1
         ' Btnquit
         ' 
         Btnquit.BackColor = Color.Red
-        Btnquit.Location = New Point(316, 518)
+        Btnquit.Location = New Point(316, 561)
         Btnquit.Name = "Btnquit"
         Btnquit.Size = New Size(55, 55)
         Btnquit.TabIndex = 39
@@ -494,11 +497,31 @@ Partial Class Form1
         LblRegular.Size = New Size(40, 21)
         LblRegular.TabIndex = 45
         LblRegular.Text = "0.00"' 
+        ' Label24
+        ' 
+        Label24.AutoSize = True
+        Label24.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label24.Location = New Point(3, 523)
+        Label24.Name = "Label24"
+        Label24.Size = New Size(45, 21)
+        Label24.TabIndex = 46
+        Label24.Text = "Total:"' 
+        ' LblTotal
+        ' 
+        LblTotal.AutoSize = True
+        LblTotal.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LblTotal.Location = New Point(54, 523)
+        LblTotal.Name = "LblTotal"
+        LblTotal.Size = New Size(28, 21)
+        LblTotal.TabIndex = 47
+        LblTotal.Text = "45"' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(383, 581)
+        ClientSize = New Size(383, 628)
+        Controls.Add(LblTotal)
+        Controls.Add(Label24)
         Controls.Add(LblRegular)
         Controls.Add(LblGourmet)
         Controls.Add(TxtStreetName)
@@ -609,4 +632,6 @@ Partial Class Form1
     Friend WithEvents TxtStreetName As TextBox
     Friend WithEvents LblGourmet As Label
     Friend WithEvents LblRegular As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents LblTotal As Label
 End Class

@@ -13,6 +13,7 @@ Public Class Form1
     Dim Customerdetails(1) As String 'array for name and phone number
     Dim Pizzascount(11) As Integer ' array for number of pizzas ordered
     Dim Delivery As Boolean ' boolean for whether or not the order is a delivery
+    Dim Totalcost As Decimal 'total price of all costs
     Private Sub Btnrestart_Click(sender As Object, e As EventArgs) Handles Btnrestart.Click
         Application.Restart() 'closes and reopens application
     End Sub
@@ -23,6 +24,7 @@ Public Class Form1
 
     Private Sub ChkDelivery_CheckedChanged(sender As Object, e As EventArgs) Handles ChkDelivery.CheckedChanged
         Delivery = Not Delivery 'reverses value of delivery variable
+        Total() 'runs total function
         'reverses whether or Not the text boxes are enabled
         TxtStreetNumber.Enabled = Not TxtStreetNumber.Enabled
         TxtStreetName.Enabled = Not TxtStreetName.Enabled
@@ -48,30 +50,29 @@ Public Class Form1
                 Address(2) = TxtSuburb.Text
             End If
         End If
-
-
-
-
-
-        'updates the value of the ammount of pizzas ordered
-        Pizzascount(0) = UpdC.Value
-        Pizzascount(1) = UpdHc.Value
-        Pizzascount(2) = UpdB.Value
-        Pizzascount(3) = UpdH.Value
-        Pizzascount(4) = UpdP.Value
-        Pizzascount(5) = UpdV.Value
-        Pizzascount(6) = UpdM.Value
-        Pizzascount(7) = UpdIc.Value
-        Pizzascount(8) = UpdIh.Value
-        Pizzascount(9) = UpdIp.Value
-        Pizzascount(10) = UpdIv.Value
-        Pizzascount(11) = UpdIm.Value
-
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim Gourmet As Decimal = PIZZACOST + GPIZZACOST
         LblRegular.Text = PIZZACOST.ToString("C")
         LblGourmet.Text = Gourmet.ToString("C")
+        Total()
+    End Sub
+
+    Private Sub Regular_ValueChanged(sender As Object, e As EventArgs) Handles UpdC.ValueChanged, UpdHc.ValueChanged, UpdB.ValueChanged, UpdH.ValueChanged, UpdP.ValueChanged, UpdV.ValueChanged, UpdM.ValueChanged
+        Total() 'runs total if any regualar pizza ammounts are changed
+    End Sub
+    Private Sub Total()
+        Totalcost = 0 'resets total cost
+        If Delivery = True Then 'checks if delivery is true
+            Totalcost = Totalcost + DELIVERYFEE ' adds delivery fee to totalcost
+        End If
+        Totalcost = Totalcost + (UpdC.Value + UpdHc.Value + UpdB.Value + UpdH.Value + UpdP.Value + UpdV.Value + UpdM.Value) * PIZZACOST 'adds cost of all regular pizzas
+        Totalcost = Totalcost + (UpdIc.Value + UpdIh.Value + UpdIp.Value + UpdIv.Value + UpdIm.Value) * (PIZZACOST + GPIZZACOST) ' adds cost of all gourmet pizzas
+        LblTotal.Text = Totalcost.ToString("C") 'updates total label
+    End Sub
+
+    Private Sub Gourmet_ValueChanged(sender As Object, e As EventArgs) Handles UpdIc.ValueChanged, UpdIh.ValueChanged, UpdIp.ValueChanged, UpdIv.ValueChanged, UpdIm.ValueChanged
+        Total() 'runs total if any gourmet pizza ammounts are changed
     End Sub
 End Class
