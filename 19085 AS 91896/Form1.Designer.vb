@@ -512,9 +512,9 @@ Partial Class Form1
         LblTotal.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblTotal.Location = New Point(54, 523)
         LblTotal.Name = "LblTotal"
-        LblTotal.Size = New Size(28, 21)
+        LblTotal.Size = New Size(40, 21)
         LblTotal.TabIndex = 47
-        LblTotal.Text = "45"' 
+        LblTotal.Text = "0.00"' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)

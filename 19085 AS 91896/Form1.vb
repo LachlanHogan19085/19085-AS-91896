@@ -36,11 +36,17 @@ Public Class Form1
     End Sub
 
     Private Sub Btnnext_Click(sender As Object, e As EventArgs) Handles Btnnext.Click
-        If Delivery = True Then 'only runs if delivery is selected
-            If TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or TxtStreetNumber.Text < 1 Then 'checks for a valid street number
-                MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
-            ElseIf TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
+        'code that runs if the order is a delivery
+        If TxtName.Text.Trim = "" Or IsNumeric(TxtName.Text) Then ' checks for a valid name
+            MessageBox.Show("please enter a valid name") 'error message if an invalid name is detected
+        ElseIf TxtPhone.Text.Trim = "" Or IsNumeric(TxtPhone.Text) = False Or TxtPhone.Text.Length < 1 Then 'checks for a valid phone number
+            MessageBox.Show("please enter a valid phone number in numeric form") 'error message if an invalid phone number is detected
+        ElseIf Delivery = True Then 'only runs if delivery is selected
+            If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
                 MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
+            ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or TxtStreetNumber.Text.Length < 1 Then 'checks for a valid street number
+                MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
+
             ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
                 MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
             Else
@@ -53,13 +59,14 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim Gourmet As Decimal = PIZZACOST + GPIZZACOST
+        Dim Gourmet As Decimal = PIZZACOST + GPIZZACOST 'defines variable to store the totoal cost of a gourmet pizza
+        ' updates prices of pizzas upon form load
         LblRegular.Text = PIZZACOST.ToString("C")
         LblGourmet.Text = Gourmet.ToString("C")
         Total()
     End Sub
 
-    Private Sub Regular_ValueChanged(sender As Object, e As EventArgs) Handles UpdC.ValueChanged, UpdHc.ValueChanged, UpdB.ValueChanged, UpdH.ValueChanged, UpdP.ValueChanged, UpdV.ValueChanged, UpdM.ValueChanged
+    Private Sub AnyPizza_ValueChanged(sender As Object, e As EventArgs) Handles UpdC.ValueChanged, UpdHc.ValueChanged, UpdB.ValueChanged, UpdH.ValueChanged, UpdP.ValueChanged, UpdV.ValueChanged, UpdM.ValueChanged, UpdIc.ValueChanged, UpdIh.ValueChanged, UpdIp.ValueChanged, UpdIv.ValueChanged, UpdIm.ValueChanged
         Total() 'runs total if any regualar pizza ammounts are changed
     End Sub
     Private Sub Total()
@@ -70,9 +77,5 @@ Public Class Form1
         Totalcost = Totalcost + (UpdC.Value + UpdHc.Value + UpdB.Value + UpdH.Value + UpdP.Value + UpdV.Value + UpdM.Value) * PIZZACOST 'adds cost of all regular pizzas
         Totalcost = Totalcost + (UpdIc.Value + UpdIh.Value + UpdIp.Value + UpdIv.Value + UpdIm.Value) * (PIZZACOST + GPIZZACOST) ' adds cost of all gourmet pizzas
         LblTotal.Text = Totalcost.ToString("C") 'updates total label
-    End Sub
-
-    Private Sub Gourmet_ValueChanged(sender As Object, e As EventArgs) Handles UpdIc.ValueChanged, UpdIh.ValueChanged, UpdIp.ValueChanged, UpdIv.ValueChanged, UpdIm.ValueChanged
-        Total() 'runs total if any gourmet pizza ammounts are changed
     End Sub
 End Class
