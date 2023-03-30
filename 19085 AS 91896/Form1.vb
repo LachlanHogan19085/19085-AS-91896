@@ -41,19 +41,25 @@ Public Class Form1
             MessageBox.Show("please enter a valid name") 'error message if an invalid name is detected
         ElseIf TxtPhone.Text.Trim = "" Or IsNumeric(TxtPhone.Text) = False Or TxtPhone.Text.Length < 1 Then 'checks for a valid phone number
             MessageBox.Show("please enter a valid phone number in numeric form") 'error message if an invalid phone number is detected
-        ElseIf Delivery = True Then 'only runs if delivery is selected
-            If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
-                MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
-            ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or TxtStreetNumber.Text.Length < 1 Then 'checks for a valid street number
-                MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
+        Else
+            'updates detials in the array when next is clicked and valid inputs are detected
+            Customerdetails(0) = TxtName.Text
+            Customerdetails(1) = TxtPhone.Text
+            If Delivery = True Then 'only runs if delivery is selected
+                If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
+                    MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
+                ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
+                    MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
 
-            ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
-                MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
-            Else
-                'updates the address deatils when valid iputs have been typed and next is clicked
-                Address(0) = TxtStreetName.Text
-                Address(1) = TxtStreetNumber.Text
-                Address(2) = TxtSuburb.Text
+                ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
+                    MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
+                Else
+                    'updates the address deatils when valid iputs have been typed and next is clicked
+                    Address(0) = TxtStreetName.Text
+                    Address(1) = TxtStreetNumber.Text
+                    Address(2) = TxtSuburb.Text
+                    MessageBox.Show(Address(1) & Address(0) & Address(2))
+                End If
             End If
         End If
     End Sub
