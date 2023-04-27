@@ -48,7 +48,7 @@ Public Class Form1
             If Delivery = True Then 'only runs if delivery is selected
                 If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
                     MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
-                ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
+                ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
                     MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
 
                 ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
@@ -58,7 +58,6 @@ Public Class Form1
                     Address(0) = TxtStreetName.Text
                     Address(1) = TxtStreetNumber.Text
                     Address(2) = TxtSuburb.Text
-                    MessageBox.Show(Address(1) & Address(0) & Address(2))
                 End If
             End If
         End If
@@ -83,5 +82,25 @@ Public Class Form1
         Totalcost = Totalcost + (UpdC.Value + UpdHc.Value + UpdB.Value + UpdH.Value + UpdP.Value + UpdV.Value + UpdM.Value) * PIZZACOST 'adds cost of all regular pizzas
         Totalcost = Totalcost + (UpdIc.Value + UpdIh.Value + UpdIp.Value + UpdIv.Value + UpdIm.Value) * (PIZZACOST + GPIZZACOST) ' adds cost of all gourmet pizzas
         LblTotal.Text = Totalcost.ToString("C") 'updates total label
+    End Sub
+    Private Sub txtphone_keypress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtPhone.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+            End If
+            If Asc(e.KeyChar) = 46 Then
+                e.Handled = False
+            End If
+        End If
+    End Sub
+    Private Sub txtstreetnumber_keypress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtStreetNumber.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+            End If
+            If Asc(e.KeyChar) = 46 Then
+                e.Handled = False
+            End If
+        End If
     End Sub
 End Class

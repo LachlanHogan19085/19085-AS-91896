@@ -31,7 +31,6 @@ Partial Class Form1
         ChkDelivery = New CheckBox()
         TxtName = New TextBox()
         TxtStreetNumber = New TextBox()
-        TxtPhone = New TextBox()
         Label7 = New Label()
         Label8 = New Label()
         Label9 = New Label()
@@ -70,6 +69,7 @@ Partial Class Form1
         LblRegular = New Label()
         Label24 = New Label()
         LblTotal = New Label()
+        TxtPhone = New MaskedTextBox()
         CType(UpdC, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdV, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdH, ComponentModel.ISupportInitialize).BeginInit()
@@ -164,13 +164,6 @@ Partial Class Form1
         TxtStreetNumber.Name = "TxtStreetNumber"
         TxtStreetNumber.Size = New Size(247, 23)
         TxtStreetNumber.TabIndex = 8
-        ' 
-        ' TxtPhone
-        ' 
-        TxtPhone.Location = New Point(128, 77)
-        TxtPhone.Name = "TxtPhone"
-        TxtPhone.Size = New Size(243, 23)
-        TxtPhone.TabIndex = 9
         ' 
         ' Label7
         ' 
@@ -515,11 +508,20 @@ Partial Class Form1
         LblTotal.Size = New Size(40, 21)
         LblTotal.TabIndex = 47
         LblTotal.Text = "0.00"' 
+        ' TxtPhone
+        ' 
+        TxtPhone.Location = New Point(128, 76)
+        TxtPhone.Mask = "(999) 000-0000"
+        TxtPhone.Name = "TxtPhone"
+        TxtPhone.Size = New Size(243, 23)
+        TxtPhone.TabIndex = 48
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(383, 628)
+        Controls.Add(TxtPhone)
         Controls.Add(LblTotal)
         Controls.Add(Label24)
         Controls.Add(LblRegular)
@@ -558,7 +560,6 @@ Partial Class Form1
         Controls.Add(Label9)
         Controls.Add(Label8)
         Controls.Add(Label7)
-        Controls.Add(TxtPhone)
         Controls.Add(TxtStreetNumber)
         Controls.Add(TxtName)
         Controls.Add(ChkDelivery)
@@ -595,7 +596,6 @@ Partial Class Form1
     Friend WithEvents ChkDelivery As CheckBox
     Friend WithEvents TxtName As TextBox
     Friend WithEvents TxtStreetNumber As TextBox
-    Friend WithEvents TxtPhone As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
@@ -634,4 +634,5 @@ Partial Class Form1
     Friend WithEvents LblRegular As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents LblTotal As Label
+    Friend WithEvents TxtPhone As MaskedTextBox
 End Class
