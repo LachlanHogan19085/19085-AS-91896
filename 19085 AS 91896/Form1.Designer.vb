@@ -69,7 +69,7 @@ Partial Class Form1
         LblRegular = New Label()
         Label24 = New Label()
         LblTotal = New Label()
-        TxtPhone = New MaskedTextBox()
+        MtbPhone = New MaskedTextBox()
         CType(UpdC, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdV, ComponentModel.ISupportInitialize).BeginInit()
         CType(UpdH, ComponentModel.ISupportInitialize).BeginInit()
@@ -508,20 +508,20 @@ Partial Class Form1
         LblTotal.Size = New Size(40, 21)
         LblTotal.TabIndex = 47
         LblTotal.Text = "0.00"' 
-        ' TxtPhone
+        ' MtbPhone
         ' 
-        TxtPhone.Location = New Point(128, 76)
-        TxtPhone.Mask = "(999) 000-0000"
-        TxtPhone.Name = "TxtPhone"
-        TxtPhone.Size = New Size(243, 23)
-        TxtPhone.TabIndex = 48
+        MtbPhone.Location = New Point(128, 76)
+        MtbPhone.Mask = "(999) 000-0000"
+        MtbPhone.Name = "MtbPhone"
+        MtbPhone.Size = New Size(243, 23)
+        MtbPhone.TabIndex = 48
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(383, 628)
-        Controls.Add(TxtPhone)
+        Controls.Add(MtbPhone)
         Controls.Add(LblTotal)
         Controls.Add(Label24)
         Controls.Add(LblRegular)
@@ -634,5 +634,5 @@ Partial Class Form1
     Friend WithEvents LblRegular As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents LblTotal As Label
-    Friend WithEvents TxtPhone As MaskedTextBox
+    Friend WithEvents MtbPhone As MaskedTextBox
 End Class

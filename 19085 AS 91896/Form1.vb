@@ -37,27 +37,34 @@ Public Class Form1
 
     Private Sub Btnnext_Click(sender As Object, e As EventArgs) Handles Btnnext.Click
         'code that runs if the order is a delivery
+        Dim phoneclean As String
         If TxtName.Text.Trim = "" Or IsNumeric(TxtName.Text) Then ' checks for a valid name
             MessageBox.Show("please enter a valid name") 'error message if an invalid name is detected
-        ElseIf TxtPhone.Text.Trim = "" Or IsNumeric(TxtPhone.Text) = False Or TxtPhone.Text.Length < 1 Then 'checks for a valid phone number
-            MessageBox.Show("please enter a valid phone number in numeric form") 'error message if an invalid phone number is detected
         Else
-            'updates detials in the array when next is clicked and valid inputs are detected
-            Customerdetails(0) = TxtName.Text
-            Customerdetails(1) = TxtPhone.Text
-            If Delivery = True Then 'only runs if delivery is selected
-                If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
-                    MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
-                ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
-                    MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
+            phoneclean = MtbPhone.Text.Replace("(", "") 'replaces left bracket with placeholder number
+            phoneclean = phoneclean.Replace("-", "") 'replaces hyphen with placeholder number
+            phoneclean = phoneclean.Replace(")", "") 'replaces right bracket with placeholder number
+            phoneclean = phoneclean.Replace(" ", "") 'replaces space with placeholder number
+            If phoneclean = "" Or IsNumeric(phoneclean) = False Or phoneclean.Length < 1 Then 'checks for a valid phone number
+                MessageBox.Show("please enter a valid phone number in numeric form") 'error message if an invalid phone number is detected
+            Else
+                'updates detials in the array when next is clicked and valid inputs are detected
+                Customerdetails(0) = TxtName.Text
+                Customerdetails(1) = MtbPhone.Text
+                If Delivery = True Then 'only runs if delivery is selected
+                    If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
+                        MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
+                    ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
+                        MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
 
-                ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
-                    MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
-                Else
-                    'updates the address deatils when valid iputs have been typed and next is clicked
-                    Address(0) = TxtStreetName.Text
-                    Address(1) = TxtStreetNumber.Text
-                    Address(2) = TxtSuburb.Text
+                    ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
+                        MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
+                    Else
+                        'updates the address deatils when valid iputs have been typed and next is clicked
+                        Address(0) = TxtStreetName.Text
+                        Address(1) = TxtStreetNumber.Text
+                        Address(2) = TxtSuburb.Text
+                    End If
                 End If
             End If
         End If
@@ -65,7 +72,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim Gourmet As Decimal = PIZZACOST + GPIZZACOST 'defines variable to store the totoal cost of a gourmet pizza
-        ' updates prices of pizzas upon form load
+        ' updates prices of pizzas upon form load and formats the as currency
         LblRegular.Text = PIZZACOST.ToString("C")
         LblGourmet.Text = Gourmet.ToString("C")
         Total()
@@ -83,7 +90,8 @@ Public Class Form1
         Totalcost = Totalcost + (UpdIc.Value + UpdIh.Value + UpdIp.Value + UpdIv.Value + UpdIm.Value) * (PIZZACOST + GPIZZACOST) ' adds cost of all gourmet pizzas
         LblTotal.Text = Totalcost.ToString("C") 'updates total label
     End Sub
-    Private Sub txtphone_keypress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtPhone.KeyPress
+    Private Sub txtphone_keypress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MtbPhone.KeyPress, MtbPhone.KeyPress
+        ' only allows numbers to be typed into text box
         If Asc(e.KeyChar) <> 8 Then
             If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
                 e.Handled = True
@@ -94,9 +102,10 @@ Public Class Form1
         End If
     End Sub
     Private Sub txtstreetnumber_keypress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TxtStreetNumber.KeyPress
+        ' only allows numbers to be typed into text box
         If Asc(e.KeyChar) <> 8 Then
             If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
-                e.Handled = True
+                e.Handled = True 'enables input to go through
             End If
             If Asc(e.KeyChar) = 46 Then
                 e.Handled = False
