@@ -1,19 +1,23 @@
 ﻿Imports System.ComponentModel.DataAnnotations
+Imports System.Net.Mail
+Imports System.Reflection.Metadata.Ecma335
 Imports System.Threading
 Imports System.Transactions
 Imports System.Xml.Schema
+Imports Microsoft.Win32.SafeHandles
 
 Public Class Form1
     'defining constants for prices
-    Const PIZZACOST As Decimal = 8.5 'regular pizza price
-    Const GPIZZACOST As Decimal = 5 ' extra price of a gourmet pizza
-    Const DELIVERYFEE As Decimal = 3 'fee for a delivery
+    Public Const PIZZACOST As Decimal = 8.5 'regular pizza price
+    Public Const GPIZZACOST As Decimal = 5 ' extra price of a gourmet pizza
+    Public Const DELIVERYFEE As Decimal = 3 'fee for a delivery
     'defining variables and strings for program
-    Dim Address(2) As String 'array for adress details
-    Dim Customerdetails(1) As String 'array for name and phone number
-    Dim Pizzascount(11) As Integer ' array for number of pizzas ordered
-    Dim Delivery As Boolean ' boolean for whether or not the order is a delivery
-    Dim Totalcost As Decimal 'total price of all costs
+    Public Address(2) As String 'array for adress details
+    Public Customerdetails(1) As String 'array for name and phone number
+    Public Pizzascount(11) As Integer ' array for number of pizzas ordered
+    Public Delivery As Boolean ' boolean for whether or not the order is a delivery
+    Public Totalcost As Decimal 'total price of all costs
+    Dim completedelivery As Boolean 'checks if a delivery is valid and has at least one pizza ordered
     Private Sub Btnrestart_Click(sender As Object, e As EventArgs) Handles Btnrestart.Click
         Application.Restart() 'closes and reopens application
     End Sub
@@ -48,7 +52,7 @@ Public Class Form1
             If phoneclean = "" Or IsNumeric(phoneclean) = False Or phoneclean.Length < 1 Then 'checks for a valid phone number
                 MessageBox.Show("please enter a valid phone number in numeric form") 'error message if an invalid phone number is detected
             Else
-                'updates detials in the array when next is clicked and valid inputs are detected
+                'updates details in the array when next is clicked and valid inputs are detected
                 Customerdetails(0) = TxtName.Text
                 Customerdetails(1) = MtbPhone.Text
                 If Delivery = True Then 'only runs if delivery is selected
@@ -68,6 +72,30 @@ Public Class Form1
                 End If
             End If
         End If
+        'updates ammount of pizzas
+        Pizzascount(0) = UpdC.Value
+        Pizzascount(1) = UpdHc.Value
+        Pizzascount(2) = UpdB.Value
+        Pizzascount(3) = UpdH.Value
+        Pizzascount(4) = UpdP.Value
+        Pizzascount(5) = UpdV.Value
+        Pizzascount(6) = UpdM.Value
+        Pizzascount(7) = UpdIc.Value
+        Pizzascount(8) = UpdIh.Value
+        Pizzascount(9) = UpdIp.Value
+        Pizzascount(10) = UpdIv.Value
+        Pizzascount(11) = UpdIm.Value
+        For pizzas = 0 To 11 'loop to check pizzas
+            If Pizzascount(pizzas) > 0 Then ' checks if there is at least one pizza ordered
+                completedelivery = True ' if so then updates variable to makr an order as complete
+            End If
+        Next
+        If completedelivery = False Then ' checks if a pizza has been ordered
+            MessageBox.Show("please enter at least one pizza") ' if not then shows the corresponding error message
+        Else
+            Form2.Show() ' loads next form if the order is complete
+        End If
+
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -51,18 +51,18 @@ Partial Class Form2
         LblName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblName.Location = New Point(2, 46)
         LblName.Name = "LblName"
-        LblName.Size = New Size(127, 21)
+        LblName.Size = New Size(131, 21)
         LblName.TabIndex = 3
-        LblName.Text = "Customer Name:"' 
+        LblName.Text = "Customer Name: "' 
         ' LblPh
         ' 
         LblPh.AutoSize = True
         LblPh.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblPh.Location = New Point(2, 76)
         LblPh.Name = "LblPh"
-        LblPh.Size = New Size(191, 21)
+        LblPh.Size = New Size(195, 21)
         LblPh.TabIndex = 5
-        LblPh.Text = "Customer Phone Number:"' 
+        LblPh.Text = "Customer Phone Number: "' 
         ' LblAddress
         ' 
         LblAddress.AutoSize = True
