@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 Imports System.Net.Mail
+Imports System.Reflection.Metadata
 Imports System.Reflection.Metadata.Ecma335
 Imports System.Threading
 Imports System.Transactions
@@ -14,7 +15,7 @@ Public Class Form1
     'defining variables and strings for program
     Public Address(2) As String 'array for adress details
     Public Customerdetails(1) As String 'array for name and phone number
-    Public Pizzascount(11) As Integer ' array for number of pizzas ordered
+    Public Pizzascount(2, 11) As String ' array for number of pizzas ordered
     Public Delivery As Boolean ' boolean for whether or not the order is a delivery
     Public Totalcost As Decimal 'total price of all costs
     Dim completedelivery As Boolean 'checks if a delivery is valid and has at least one pizza ordered
@@ -73,20 +74,20 @@ Public Class Form1
             End If
         End If
         'updates ammount of pizzas
-        Pizzascount(0) = UpdC.Value
-        Pizzascount(1) = UpdHc.Value
-        Pizzascount(2) = UpdB.Value
-        Pizzascount(3) = UpdH.Value
-        Pizzascount(4) = UpdP.Value
-        Pizzascount(5) = UpdV.Value
-        Pizzascount(6) = UpdM.Value
-        Pizzascount(7) = UpdIc.Value
-        Pizzascount(8) = UpdIh.Value
-        Pizzascount(9) = UpdIp.Value
-        Pizzascount(10) = UpdIv.Value
-        Pizzascount(11) = UpdIm.Value
+        Pizzascount(2, 0) = UpdC.Value
+        Pizzascount(2, 1) = UpdHc.Value
+        Pizzascount(2, 2) = UpdB.Value
+        Pizzascount(2, 3) = UpdH.Value
+        Pizzascount(2, 4) = UpdP.Value
+        Pizzascount(2, 5) = UpdV.Value
+        Pizzascount(2, 6) = UpdM.Value
+        Pizzascount(2, 7) = UpdIc.Value
+        Pizzascount(2, 8) = UpdIh.Value
+        Pizzascount(2, 9) = UpdIp.Value
+        Pizzascount(2, 10) = UpdIv.Value
+        Pizzascount(2, 11) = UpdIm.Value
         For pizzas = 0 To 11 'loop to check pizzas
-            If Pizzascount(pizzas) > 0 Then ' checks if there is at least one pizza ordered
+            If Pizzascount(2, pizzas) > 0 Then ' checks if there is at least one pizza ordered
                 completedelivery = True ' if so then updates variable to makr an order as complete
             End If
         Next
@@ -95,11 +96,38 @@ Public Class Form1
         Else
             Form2.Show() ' loads next form if the order is complete
         End If
-
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim Gourmet As Decimal = PIZZACOST + GPIZZACOST 'defines variable to store the totoal cost of a gourmet pizza
+        Dim Gourmet As Decimal = PIZZACOST + GPIZZACOST 'defines variable to store the total cost of a gourmet pizza
+        'updates names of pizzas upon load
+        Pizzascount(0, 0) = "Cheese"
+        Pizzascount(0, 1) = "Ham and Cheese"
+        Pizzascount(0, 2) = "Beef and Onion"
+        Pizzascount(0, 3) = "Hawaiian"
+        Pizzascount(0, 4) = "Pepperoni"
+        Pizzascount(0, 5) = "Vegetarian"
+        Pizzascount(0, 6) = "Meatlovers"
+        Pizzascount(0, 7) = "Italian Cheese"
+        Pizzascount(0, 8) = "Italian Hawaiian"
+        Pizzascount(0, 9) = "Italian Pepperoni"
+        Pizzascount(0, 10) = "Italian Vegetarian"
+        Pizzascount(0, 11) = "Italian Meatlovers"
+        'updates prices of pizza upon load
+        Pizzascount(1, 0) = 8.5
+        Pizzascount(1, 1) = 8.5
+        Pizzascount(1, 2) = 8.5
+        Pizzascount(1, 3) = 8.5
+        Pizzascount(1, 4) = 8.5
+        Pizzascount(1, 5) = 8.5
+        Pizzascount(1, 6) = 8.5
+        Pizzascount(1, 7) = 12.5
+        Pizzascount(1, 8) = 12.5
+        Pizzascount(1, 9) = 12.5
+        Pizzascount(1, 10) = 12.5
+        Pizzascount(1, 11) = 12.5
+
+
         ' updates prices of pizzas upon form load and formats the as currency
         LblRegular.Text = PIZZACOST.ToString("C")
         LblGourmet.Text = Gourmet.ToString("C")
