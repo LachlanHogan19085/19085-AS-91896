@@ -69,9 +69,9 @@ Partial Class Form2
         LblAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblAddress.Location = New Point(2, 106)
         LblAddress.Name = "LblAddress"
-        LblAddress.Size = New Size(130, 21)
+        LblAddress.Size = New Size(134, 21)
         LblAddress.TabIndex = 4
-        LblAddress.Text = "Delivery Address:"' 
+        LblAddress.Text = "Delivery Address: "' 
         ' RtxtPrices
         ' 
         RtxtPrices.BorderStyle = BorderStyle.None

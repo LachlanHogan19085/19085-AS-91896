@@ -114,20 +114,18 @@ Public Class Form1
         Pizzascount(0, 10) = "Italian Vegetarian"
         Pizzascount(0, 11) = "Italian Meatlovers"
         'updates prices of pizza upon load
-        Pizzascount(1, 0) = 8.5
-        Pizzascount(1, 1) = 8.5
-        Pizzascount(1, 2) = 8.5
-        Pizzascount(1, 3) = 8.5
-        Pizzascount(1, 4) = 8.5
-        Pizzascount(1, 5) = 8.5
-        Pizzascount(1, 6) = 8.5
-        Pizzascount(1, 7) = 12.5
-        Pizzascount(1, 8) = 12.5
-        Pizzascount(1, 9) = 12.5
-        Pizzascount(1, 10) = 12.5
-        Pizzascount(1, 11) = 12.5
-
-
+        Pizzascount(1, 0) = PIZZACOST
+        Pizzascount(1, 1) = PIZZACOST
+        Pizzascount(1, 2) = PIZZACOST
+        Pizzascount(1, 3) = PIZZACOST
+        Pizzascount(1, 4) = PIZZACOST
+        Pizzascount(1, 5) = PIZZACOST
+        Pizzascount(1, 6) = PIZZACOST
+        Pizzascount(1, 7) = Gourmet
+        Pizzascount(1, 8) = Gourmet
+        Pizzascount(1, 9) = Gourmet
+        Pizzascount(1, 10) = Gourmet
+        Pizzascount(1, 11) = Gourmet
         ' updates prices of pizzas upon form load and formats the as currency
         LblRegular.Text = PIZZACOST.ToString("C")
         LblGourmet.Text = Gourmet.ToString("C")
