@@ -12,13 +12,14 @@ Public Class Form1
     Public Const PIZZACOST As Decimal = 8.5 'regular pizza price
     Public Const GPIZZACOST As Decimal = 5 ' extra price of a gourmet pizza
     Public Const DELIVERYFEE As Decimal = 3 'fee for a delivery
+    Public Const FLAVOURAMOUNT As Integer = 11 'amount of different pizza flavours there are (used to display pizzas)
     'defining variables and strings for program
     Public Address(2) As String 'array for adress details
     Public Customerdetails(1) As String 'array for name and phone number
     Public Pizzascount(2, 11) As String ' array for number of pizzas ordered
     Public Delivery As Boolean ' boolean for whether or not the order is a delivery
     Public Totalcost As Decimal 'total price of all costs
-    Dim completedelivery As Boolean 'checks if a delivery is valid and has at least one pizza ordered
+    Dim completepizzas As Boolean 'checks if an order is valid and has at least one pizza ordered
     Private Sub Btnrestart_Click(sender As Object, e As EventArgs) Handles Btnrestart.Click
         Application.Restart() 'closes and reopens application
     End Sub
@@ -56,45 +57,49 @@ Public Class Form1
                 'updates details in the array when next is clicked and valid inputs are detected
                 Customerdetails(0) = TxtName.Text
                 Customerdetails(1) = MtbPhone.Text
-                If Delivery = True Then 'only runs if delivery is selected
-                    If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
-                        MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
-                    ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
-                        MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
+                'updates ammount of pizzas
+                Pizzascount(2, 0) = UpdC.Value
+                Pizzascount(2, 1) = UpdHc.Value
+                Pizzascount(2, 2) = UpdB.Value
+                Pizzascount(2, 3) = UpdH.Value
+                Pizzascount(2, 4) = UpdP.Value
+                Pizzascount(2, 5) = UpdV.Value
+                Pizzascount(2, 6) = UpdM.Value
+                Pizzascount(2, 7) = UpdIc.Value
+                Pizzascount(2, 8) = UpdIh.Value
+                Pizzascount(2, 9) = UpdIp.Value
+                Pizzascount(2, 10) = UpdIv.Value
+                Pizzascount(2, 11) = UpdIm.Value
+                For pizzas = 0 To 11 'loop to check pizzas
+                    If Pizzascount(2, pizzas) > 0 Then ' checks if there is at least one pizza ordered
+                        completepizzas = True ' if so then updates variable to mark an pizza order as complete
+                    End If
+                Next
+                If completepizzas = False Then ' checks if a pizza has been ordered
+                    MessageBox.Show("please enter at least one pizza") ' if not then shows the corresponding error message
+                Else
+                    If Delivery = True Then 'only runs if delivery is selected
+                        If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
+                            MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
+                        ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
+                            MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
 
-                    ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
-                        MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
+                        ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
+                            MessageBox.Show("please enter a valid suburb name") 'error message if an invalid suburb is detected
+                        Else
+                            'updates the address deatils when valid iputs have been typed and next is clicked
+                            Address(0) = TxtStreetName.Text
+                            Address(1) = TxtStreetNumber.Text
+                            Address(2) = TxtSuburb.Text
+                            Form2.Show() ' loads next form if the order is complete
+                            Me.Hide() ' hides form 1
+                        End If
                     Else
-                        'updates the address deatils when valid iputs have been typed and next is clicked
-                        Address(0) = TxtStreetName.Text
-                        Address(1) = TxtStreetNumber.Text
-                        Address(2) = TxtSuburb.Text
+                        Form2.Show() ' loads next form if the order is complete
+                        Me.Hide() ' hides form 1
                     End If
                 End If
             End If
-        End If
-        'updates ammount of pizzas
-        Pizzascount(2, 0) = UpdC.Value
-        Pizzascount(2, 1) = UpdHc.Value
-        Pizzascount(2, 2) = UpdB.Value
-        Pizzascount(2, 3) = UpdH.Value
-        Pizzascount(2, 4) = UpdP.Value
-        Pizzascount(2, 5) = UpdV.Value
-        Pizzascount(2, 6) = UpdM.Value
-        Pizzascount(2, 7) = UpdIc.Value
-        Pizzascount(2, 8) = UpdIh.Value
-        Pizzascount(2, 9) = UpdIp.Value
-        Pizzascount(2, 10) = UpdIv.Value
-        Pizzascount(2, 11) = UpdIm.Value
-        For pizzas = 0 To 11 'loop to check pizzas
-            If Pizzascount(2, pizzas) > 0 Then ' checks if there is at least one pizza ordered
-                completedelivery = True ' if so then updates variable to makr an order as complete
-            End If
-        Next
-        If completedelivery = False Then ' checks if a pizza has been ordered
-            MessageBox.Show("please enter at least one pizza") ' if not then shows the corresponding error message
-        Else
-            Form2.Show() ' loads next form if the order is complete
         End If
     End Sub
 
@@ -114,18 +119,12 @@ Public Class Form1
         Pizzascount(0, 10) = "Italian Vegetarian"
         Pizzascount(0, 11) = "Italian Meatlovers"
         'updates prices of pizza upon load
-        Pizzascount(1, 0) = PIZZACOST
-        Pizzascount(1, 1) = PIZZACOST
-        Pizzascount(1, 2) = PIZZACOST
-        Pizzascount(1, 3) = PIZZACOST
-        Pizzascount(1, 4) = PIZZACOST
-        Pizzascount(1, 5) = PIZZACOST
-        Pizzascount(1, 6) = PIZZACOST
-        Pizzascount(1, 7) = Gourmet
-        Pizzascount(1, 8) = Gourmet
-        Pizzascount(1, 9) = Gourmet
-        Pizzascount(1, 10) = Gourmet
-        Pizzascount(1, 11) = Gourmet
+        For x = 0 To 6
+            Pizzascount(1, x) = PIZZACOST
+        Next
+        For x = 7 To 11
+            Pizzascount(1, x) = Gourmet
+        Next
         ' updates prices of pizzas upon form load and formats the as currency
         LblRegular.Text = PIZZACOST.ToString("C")
         LblGourmet.Text = Gourmet.ToString("C")
