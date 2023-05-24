@@ -2,6 +2,8 @@
 
 Public Class Form2
     Dim grandtotal As Decimal
+    Public print As String
+    Public tempprice As Decimal 'variable in order to display price
     Private Sub Btnrestart_Click(sender As Object, e As EventArgs) Handles BtnRestart.Click
         Application.Restart() 'closes and reopens application
     End Sub
@@ -19,7 +21,7 @@ Public Class Form2
     End Sub
 
     Private Sub BtnPrint_Click(sender As Object, e As EventArgs) Handles BtnPrint.Click
-
+        Form3.Show()
     End Sub
 
     Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
@@ -35,7 +37,7 @@ Public Class Form2
             LblAddress.Visible = True
             LblAddress.Text = LblAddress.Text & Form1.Address(1) & " " & Form1.Address(0) & ", " & Form1.Address(2) ' if it is a delivery it shows and formats the adress
         End If
-        Dim tempprice As Decimal 'temporary variable in order to display price
+
         For x = 0 To Form1.FLAVOURAMOUNT 'loops for ammout of different pizza flavours
             If Form1.Pizzascount(2, x) > 0 Then ' only runs the display code for one flavour if at least of of said flavour was ordered
                 tempprice = Form1.Pizzascount(1, x) 'update temporrary variable
