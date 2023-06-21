@@ -47,13 +47,14 @@ Public Class Form1
         If TxtName.Text.Trim = "" Or IsNumeric(TxtName.Text) Then ' checks for a valid name
             MessageBox.Show("please enter a valid name") 'error message if an invalid name is detected
         Else
-            phoneclean = MtbPhone.Text.Replace("(", "") 'replaces left bracket with placeholder number
-            phoneclean = phoneclean.Replace("-", "") 'replaces hyphen with placeholder number
-            phoneclean = phoneclean.Replace(")", "") 'replaces right bracket with placeholder number
-            phoneclean = phoneclean.Replace(" ", "") 'replaces space with placeholder number
-            If phoneclean = "" Or IsNumeric(phoneclean) = False Or phoneclean.Length < 1 Then 'checks for a valid phone number
-                MessageBox.Show("please enter a valid phone number in numeric form") 'error message if an invalid phone number is detected
+            phoneclean = MtbPhone.Text.Replace("(", "") 'replaces left bracket with blank
+            phoneclean = phoneclean.Replace("-", "") 'replaces hyphen with blank
+            phoneclean = phoneclean.Replace(")", "") 'replaces right bracket with blank
+            phoneclean = phoneclean.Replace(" ", "") 'replaces space with blank
+            If phoneclean = "" Or IsNumeric(phoneclean) = False Or phoneclean.Length < 9 Then 'checks for a valid phone number
+                MessageBox.Show("please enter a valid phone number in numeric form greater than 8 numbers long") 'error message if an invalid phone number is detected
             Else
+
                 'updates details in the array when next is clicked and valid inputs are detected
                 Customerdetails(0) = TxtName.Text
                 Customerdetails(1) = MtbPhone.Text
@@ -81,7 +82,7 @@ Public Class Form1
                     If Delivery = True Then 'only runs if delivery is selected
                         If TxtStreetName.Text.Trim = "" Or IsNumeric(TxtStreetName.Text) Then ' checks for a valid street name
                             MessageBox.Show("please enter a valid street name") 'error message if an invalid street name is detected
-                        ElseIf TxtStreetNumber.Text.Trim = "" Or IsNumeric(TxtStreetNumber.Text) = False Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
+                        ElseIf TxtStreetNumber.Text.Trim = "" Or Val(TxtStreetNumber.Text) < 1 Then 'checks for a valid street number
                             MessageBox.Show("please enter a valid street number in numeric form") 'error message if an invalid street number is detected
 
                         ElseIf TxtSuburb.Text.Trim = "" Or IsNumeric(TxtSuburb.Text) Then ' checks for a valid suburb name
@@ -160,9 +161,7 @@ Public Class Form1
             If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
                 e.Handled = True 'enables input to go through
             End If
-            If Asc(e.KeyChar) = 46 Then
-                e.Handled = False
-            End If
         End If
     End Sub
 End Class
+

@@ -1,17 +1,20 @@
 ﻿Imports System.Drawing.Printing
+Imports System.Net.WebSockets
+
 Public Class Form3
     Dim printstring As String 'variable to hold the text of the summary
     Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
+        'closes this form and goes back to form 2
         Me.Close()
         Form2.Show()
     End Sub
 
     Private Sub BtnQuit_Click(sender As Object, e As EventArgs) Handles BtnQuit.Click
-        End
+        End ' closes program
     End Sub
 
     Private Sub BtnRestart_Click(sender As Object, e As EventArgs) Handles BtnRestart.Click
-        Application.Restart()
+        Application.Restart() ' restarts program
     End Sub
 
     Private Sub Form3_show(sender As Object, e As EventArgs) Handles MyBase.Shown
