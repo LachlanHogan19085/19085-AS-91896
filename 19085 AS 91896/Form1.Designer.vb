@@ -144,9 +144,9 @@ Partial Class Form1
         ChkDelivery.Location = New Point(3, 98)
         ChkDelivery.Name = "ChkDelivery"
         ChkDelivery.RightToLeft = RightToLeft.Yes
-        ChkDelivery.Size = New Size(93, 25)
+        ChkDelivery.Size = New Size(197, 25)
         ChkDelivery.TabIndex = 6
-        ChkDelivery.Text = "?Delivery"
+        ChkDelivery.Text = "Delivery? ($3.00 charge)"
         ChkDelivery.TextAlign = ContentAlignment.MiddleCenter
         ChkDelivery.UseVisualStyleBackColor = True
         ' 

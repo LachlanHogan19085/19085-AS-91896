@@ -59,6 +59,7 @@ Partial Class Form3
         Rtxtprintpreview.BorderStyle = BorderStyle.None
         Rtxtprintpreview.Location = New Point(12, 49)
         Rtxtprintpreview.Name = "Rtxtprintpreview"
+        Rtxtprintpreview.ReadOnly = True
         Rtxtprintpreview.Size = New Size(246, 385)
         Rtxtprintpreview.TabIndex = 0
         Rtxtprintpreview.Text = "test"' 
