@@ -26,14 +26,17 @@ Partial Class Form2
         LblName = New Label()
         LblPh = New Label()
         LblAddress = New Label()
-        RtxtPrices = New RichTextBox()
+        RtxtTotal = New RichTextBox()
         BtnRestart = New Button()
         BtnQuit = New Button()
         BtnCompleteQuit = New Button()
         BtnCompleteNew = New Button()
         BtnPrint = New Button()
         BtnBack = New Button()
-        RtxtSums = New RichTextBox()
+        RtxtPizzas = New RichTextBox()
+        RtxtQty = New RichTextBox()
+        lblprice = New Label()
+        RtxtPrices = New RichTextBox()
         SuspendLayout()
         ' 
         ' Label2
@@ -51,35 +54,40 @@ Partial Class Form2
         LblName.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblName.Location = New Point(2, 46)
         LblName.Name = "LblName"
-        LblName.Size = New Size(127, 21)
+        LblName.Size = New Size(131, 21)
         LblName.TabIndex = 3
-        LblName.Text = "Customer Name:"' 
+        LblName.Text = "Customer Name: "' 
         ' LblPh
         ' 
         LblPh.AutoSize = True
         LblPh.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblPh.Location = New Point(2, 76)
         LblPh.Name = "LblPh"
-        LblPh.Size = New Size(191, 21)
+        LblPh.Size = New Size(195, 21)
         LblPh.TabIndex = 5
-        LblPh.Text = "Customer Phone Number:"' 
+        LblPh.Text = "Customer Phone Number: "' 
         ' LblAddress
         ' 
         LblAddress.AutoSize = True
         LblAddress.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LblAddress.Location = New Point(2, 106)
         LblAddress.Name = "LblAddress"
-        LblAddress.Size = New Size(130, 21)
+        LblAddress.Size = New Size(134, 21)
         LblAddress.TabIndex = 4
-        LblAddress.Text = "Delivery Address:"' 
-        ' RtxtPrices
+        LblAddress.Text = "Delivery Address: "
+        LblAddress.Visible = False
         ' 
-        RtxtPrices.BorderStyle = BorderStyle.None
-        RtxtPrices.Location = New Point(12, 142)
-        RtxtPrices.Name = "RtxtPrices"
-        RtxtPrices.Size = New Size(308, 309)
-        RtxtPrices.TabIndex = 6
-        RtxtPrices.Text = ""' 
+        ' RtxtTotal
+        ' 
+        RtxtTotal.BackColor = SystemColors.ControlLightLight
+        RtxtTotal.BorderStyle = BorderStyle.None
+        RtxtTotal.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        RtxtTotal.Location = New Point(291, 138)
+        RtxtTotal.Name = "RtxtTotal"
+        RtxtTotal.ReadOnly = True
+        RtxtTotal.Size = New Size(80, 309)
+        RtxtTotal.TabIndex = 6
+        RtxtTotal.Text = "Total:"' 
         ' BtnRestart
         ' 
         BtnRestart.BackColor = Color.Red
@@ -140,27 +148,64 @@ Partial Class Form2
         BtnBack.Text = "Back"
         BtnBack.UseVisualStyleBackColor = False
         ' 
-        ' RtxtSums
+        ' RtxtPizzas
         ' 
-        RtxtSums.BorderStyle = BorderStyle.None
-        RtxtSums.Location = New Point(316, 142)
-        RtxtSums.Name = "RtxtSums"
-        RtxtSums.Size = New Size(55, 309)
-        RtxtSums.TabIndex = 45
-        RtxtSums.Text = ""' 
+        RtxtPizzas.BackColor = SystemColors.ControlLightLight
+        RtxtPizzas.BorderStyle = BorderStyle.None
+        RtxtPizzas.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        RtxtPizzas.Location = New Point(12, 138)
+        RtxtPizzas.Name = "RtxtPizzas"
+        RtxtPizzas.ReadOnly = True
+        RtxtPizzas.Size = New Size(140, 309)
+        RtxtPizzas.TabIndex = 45
+        RtxtPizzas.Text = "Pizzas Ordered:"' 
+        ' RtxtQty
+        ' 
+        RtxtQty.BackColor = SystemColors.ControlLightLight
+        RtxtQty.BorderStyle = BorderStyle.None
+        RtxtQty.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        RtxtQty.Location = New Point(158, 138)
+        RtxtQty.Name = "RtxtQty"
+        RtxtQty.ReadOnly = True
+        RtxtQty.Size = New Size(54, 309)
+        RtxtQty.TabIndex = 46
+        RtxtQty.Text = "Qty:"' 
+        ' lblprice
+        ' 
+        lblprice.BackColor = SystemColors.ControlLightLight
+        lblprice.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        lblprice.Location = New Point(218, 138)
+        lblprice.Name = "lblprice"
+        lblprice.Size = New Size(0, 0)
+        lblprice.TabIndex = 48
+        lblprice.Text = "Price:"' 
+        ' RtxtPrices
+        ' 
+        RtxtPrices.BackColor = SystemColors.ControlLightLight
+        RtxtPrices.BorderStyle = BorderStyle.None
+        RtxtPrices.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point)
+        RtxtPrices.Location = New Point(218, 138)
+        RtxtPrices.Name = "RtxtPrices"
+        RtxtPrices.ReadOnly = True
+        RtxtPrices.Size = New Size(67, 309)
+        RtxtPrices.TabIndex = 49
+        RtxtPrices.Text = "Price:"' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(383, 585)
-        Controls.Add(RtxtSums)
+        Controls.Add(RtxtPrices)
+        Controls.Add(lblprice)
+        Controls.Add(RtxtQty)
+        Controls.Add(RtxtPizzas)
         Controls.Add(BtnBack)
         Controls.Add(BtnPrint)
         Controls.Add(BtnCompleteNew)
         Controls.Add(BtnCompleteQuit)
         Controls.Add(BtnQuit)
         Controls.Add(BtnRestart)
-        Controls.Add(RtxtPrices)
+        Controls.Add(RtxtTotal)
         Controls.Add(LblPh)
         Controls.Add(LblAddress)
         Controls.Add(LblName)
@@ -174,12 +219,16 @@ Partial Class Form2
     Friend WithEvents LblName As Label
     Friend WithEvents LblPh As Label
     Friend WithEvents LblAddress As Label
-    Friend WithEvents RtxtPrices As RichTextBox
+    Friend WithEvents RtxtTotal As RichTextBox
     Friend WithEvents BtnRestart As Button
     Friend WithEvents BtnQuit As Button
     Friend WithEvents BtnCompleteQuit As Button
     Friend WithEvents BtnCompleteNew As Button
     Friend WithEvents BtnPrint As Button
     Friend WithEvents BtnBack As Button
-    Friend WithEvents RtxtSums As RichTextBox
+    Friend WithEvents RtxtPizzas As RichTextBox
+    Friend WithEvents RtxtQty As RichTextBox
+    Friend WithEvents RtxtPrice As RichTextBox
+    Friend WithEvents lblprice As Label
+    Friend WithEvents RtxtPrices As RichTextBox
 End Class
